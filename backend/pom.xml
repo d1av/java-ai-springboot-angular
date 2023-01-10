@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>io.davi</groupId>
-	<artifactId>parser</artifactId>
+	<artifactId>java-ai</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>parser</name>
 	<description>Demo project for Spring Boot</description>
