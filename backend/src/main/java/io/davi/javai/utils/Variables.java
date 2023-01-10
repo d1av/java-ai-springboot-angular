@@ -36,6 +36,12 @@ public class Variables {
     private String uselessFact;
     @Value("${slip.advice}")
     private String slipAdvice;
+    @Value("${kayne.rest}")
+    private String kayneRest;
+
+    public String getKayneRest() {
+        return kayneRest;
+    }
 
     public String getSlipAdvice() {
         return slipAdvice;
@@ -96,4 +102,5 @@ public class Variables {
     public String getAnimeQuoteMessage() {
         return animeQuoteMessage;
     }
+
 }

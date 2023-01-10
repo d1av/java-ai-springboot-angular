@@ -25,8 +25,8 @@ public class GeneratorServiceImpl implements GeneratorService {
     @Override
     public ResponseDto getOneMessage() {
         ResponseDto dto = new ResponseDto();
-        //int randomNumber = Math.toIntExact(Math.round(Math.random() * 5));
-        int randomNumber = 6;
+        int randomNumber = Math.toIntExact(Math.round(Math.random() * 7));
+        //int randomNumber = 7;
         switch (randomNumber) {
             case 0 -> {
                 String author = generateMessage.generateInsult().getCreatedby().trim();
@@ -72,6 +72,12 @@ public class GeneratorServiceImpl implements GeneratorService {
             case 6 -> {
                 dto.setType("text");
                 dto.setQuote(generateMessage.generateSlipAdvice().getSlip().getAdvice());
+                dto.setNature("slipAdvice");
+            }
+            case 7 -> {
+                dto.setType("text");
+                dto.setQuote(generateMessage.generateKayneRest().getQuote());
+                dto.setAuthor("Kayne West");
                 dto.setNature("slipAdvice");
             }
             default -> {

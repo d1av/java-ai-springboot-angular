@@ -49,6 +49,10 @@ public class GenerateMessage {
         return restTemplate.getForObject(variables.getUselessFact(), Quote.class);
     }
 
+    public Quote generateKayneRest() {
+        return restTemplate.getForObject(variables.getKayneRest(), Quote.class);
+    }
+
     public Slip generateSlipAdvice() {
         // makes request accept any media response
         List<HttpMessageConverter<?>> messageConverters = new ArrayList<>();

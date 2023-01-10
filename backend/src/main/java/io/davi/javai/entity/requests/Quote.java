@@ -13,7 +13,7 @@ import lombok.Setter;
 public class Quote {
     private String text;
     private Author author;
-
+    private String quote;
     private String source;
 }
 
