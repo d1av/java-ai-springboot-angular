@@ -20,15 +20,23 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<ErrorDetails> handleNullPointerException(NullPointerException exception,
-                                                                        WebRequest webRequest){
+                                                                   WebRequest webRequest) {
         ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
                 webRequest.getDescription(false));
         return new ResponseEntity<>(errorDetails, HttpStatus.NOT_FOUND);
     }
 
+    @ExceptionHandler(HttpRequestError.class)
+    public ResponseEntity<ErrorDetails> handleNullPointerException(HttpRequestError exception,
+                                                                   WebRequest webRequest) {
+        ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
+                webRequest.getDescription(false));
+        return new ResponseEntity<>(errorDetails, HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
     @ExceptionHandler(HttpClientErrorException.class)
     public RedirectView handleHttpError(HttpClientErrorException exception,
-                                                        WebRequest webRequest){
+                                        WebRequest webRequest) {
         // save error database and redirect to get new endpoint
         ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
                 webRequest.getDescription(false));

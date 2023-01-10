@@ -34,6 +34,12 @@ public class Variables {
     private String coffeeImage;
     @Value("${useless.fact}")
     private String uselessFact;
+    @Value("${slip.advice}")
+    private String slipAdvice;
+
+    public String getSlipAdvice() {
+        return slipAdvice;
+    }
 
     public String getUselessFact() {
         return uselessFact;

@@ -25,8 +25,8 @@ public class GeneratorServiceImpl implements GeneratorService {
     @Override
     public ResponseDto getOneMessage() {
         ResponseDto dto = new ResponseDto();
-        int randomNumber = Math.toIntExact(Math.round(Math.random() * 5));
-        //int math = 4;
+        //int randomNumber = Math.toIntExact(Math.round(Math.random() * 5));
+        int randomNumber = 6;
         switch (randomNumber) {
             case 0 -> {
                 String author = generateMessage.generateInsult().getCreatedby().trim();
@@ -67,10 +67,15 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setType("text");
                 dto.setQuote(generateMessage.generateUselessFact().getText());
                 dto.setAuthor(source.length() > 1 ? source : null);
-                dto.setNature("animeQuote");
+                dto.setNature("uselessFact");
+            }
+            case 6 -> {
+                dto.setType("text");
+                dto.setQuote(generateMessage.generateSlipAdvice().getSlip().getAdvice());
+                dto.setNature("slipAdvice");
             }
             default -> {
-                throw new HttpRequestError("Error on Message Api call.");
+                throw new HttpRequestError("Error on Message Api call. Reload and it should disappear.");
             }
         }
         logger.info("SERVICE message : " + randomNumber);
@@ -118,11 +123,13 @@ public class GeneratorServiceImpl implements GeneratorService {
                 if (dogImageOrVideo.endsWith(".mp4")) {
                     dto.setType("video");
                     dto.setVideo(dogImageOrVideo);
+                    dto.setNature("dogVideo");
                 } else {
                     dto.setType("image");
                     dto.setImage(dogImageOrVideo);
+                    dto.setNature("dogImage");
                 }
-                dto.setNature("dogImage");
+
             }
             case 7 -> {
                 dto.setType("image");
@@ -130,7 +137,7 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setNature("duckImage");
             }
             default -> {
-                throw new HttpRequestError("Error on Image Api call.");
+                throw new HttpRequestError("Error on Image Api call. Reload and it should disappear.");
             }
         }
         logger.info("SERVICE image: " + randomNumber);
