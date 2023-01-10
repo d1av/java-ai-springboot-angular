@@ -13,5 +13,6 @@ import lombok.Setter;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Bored {
     private String activity;
+    private String type;
 
 }

@@ -2,15 +2,15 @@ package io.davi.javai.Services.Impl;
 
 import io.davi.javai.Services.GeneratorService;
 import io.davi.javai.dto.ResponseDto;
-import io.davi.javai.helpers.Generators;
+import io.davi.javai.helpers.GenerateMessage;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GeneratorServiceImpl implements GeneratorService {
 
-    private Generators generators;
+    private GenerateMessage generators;
 
-    public GeneratorServiceImpl(Generators generators) {
+    public GeneratorServiceImpl(GenerateMessage generators) {
         this.generators = generators;
     }
 
@@ -34,8 +34,7 @@ public class GeneratorServiceImpl implements GeneratorService {
             }
             case 5 -> {
                 dto.setQuote(generators.generateAnimeQuote().getQuote());
-            }
-            case 6 -> {
+                dto.setAuthor(generators.generateQuote().getAuthor().getName());
             }
             default -> {
                 throw new RuntimeException();
