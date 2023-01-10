@@ -70,7 +70,7 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setNature("animeQuote");
             }
             default -> {
-                throw new HttpRequestError("Error on Api call.");
+                throw new HttpRequestError("Error on Message Api call.");
             }
         }
         logger.info("SERVICE message : " + randomNumber);
@@ -114,8 +114,14 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setNature("foxImage");
             }
             case 6 -> {
-                dto.setType("image");
-                dto.setImage(generateImage.generateDog().getUrl());
+                String dogImageOrVideo = generateImage.generateDog().getUrl();
+                if (dogImageOrVideo.endsWith(".mp4")) {
+                    dto.setType("video");
+                    dto.setVideo(dogImageOrVideo);
+                } else {
+                    dto.setType("image");
+                    dto.setImage(dogImageOrVideo);
+                }
                 dto.setNature("dogImage");
             }
             case 7 -> {
@@ -124,7 +130,7 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setNature("duckImage");
             }
             default -> {
-                throw new HttpRequestError("Error on Api call.");
+                throw new HttpRequestError("Error on Image Api call.");
             }
         }
         logger.info("SERVICE image: " + randomNumber);
