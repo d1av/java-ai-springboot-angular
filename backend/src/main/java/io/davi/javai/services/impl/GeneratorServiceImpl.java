@@ -78,7 +78,7 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setType("text");
                 dto.setQuote(generateMessage.generateKayneRest().getQuote());
                 dto.setAuthor("Kayne West");
-                dto.setNature("slipAdvice");
+                dto.setNature("kayneQuote");
             }
             default -> {
                 throw new HttpRequestError("Error on Message Api call. Reload and it should disappear.");
