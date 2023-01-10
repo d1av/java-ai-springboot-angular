@@ -2,8 +2,11 @@ package io.davi.javai.helpers;
 
 import io.davi.javai.entity.requests.Url;
 import io.davi.javai.utils.Variables;
+import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
+
 
 @Component
 public class GenerateImage {
@@ -26,6 +29,7 @@ public class GenerateImage {
     public Url generateAnimeDance() {
         return restTemplate.getForObject(variables.getAnimeDanceImage(), Url.class);
     }
+
     public Url generateAnimeCringe() {
         return restTemplate.getForObject(variables.getAnimeCringeImage(), Url.class);
     }
