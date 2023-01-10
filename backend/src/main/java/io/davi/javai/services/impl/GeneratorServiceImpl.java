@@ -5,6 +5,7 @@ import io.davi.javai.exceptions.HttpRequestError;
 import io.davi.javai.helpers.GenerateImage;
 import io.davi.javai.helpers.GenerateMessage;
 import io.davi.javai.services.GeneratorService;
+import io.davi.javai.services.LoggingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -12,14 +13,15 @@ import org.springframework.stereotype.Service;
 @Service
 public class GeneratorServiceImpl implements GeneratorService {
 
-    private Logger logger = LoggerFactory.getLogger(GeneratorServiceImpl.class);
-
+    Logger logger = LoggerFactory.getLogger(GeneratorServiceImpl.class);
     private GenerateMessage generateMessage;
     private GenerateImage generateImage;
+    private LoggingService loggingService;
 
-    public GeneratorServiceImpl(GenerateMessage generateMessage, GenerateImage generateImage) {
+    public GeneratorServiceImpl(GenerateMessage generateMessage, GenerateImage generateImage, LoggingService loggingService) {
         this.generateMessage = generateMessage;
         this.generateImage = generateImage;
+        this.loggingService = loggingService;
     }
 
     @Override
@@ -85,6 +87,7 @@ public class GeneratorServiceImpl implements GeneratorService {
             }
         }
         logger.info("SERVICE message : " + randomNumber);
+        loggingService.saveResponseToDatabase(dto);
         return dto;
     }
 
@@ -147,6 +150,7 @@ public class GeneratorServiceImpl implements GeneratorService {
             }
         }
         logger.info("SERVICE image: " + randomNumber);
+        loggingService.saveResponseToDatabase(dto);
         return dto;
     }
 

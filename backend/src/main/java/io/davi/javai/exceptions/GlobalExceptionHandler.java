@@ -2,6 +2,7 @@ package io.davi.javai.exceptions;
 
 import io.davi.javai.dto.ErrorDetails;
 import io.davi.javai.services.GeneratorService;
+import io.davi.javai.services.LoggingService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,7 +17,12 @@ import java.util.Date;
 
 @ControllerAdvice
 public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
-    private GeneratorService generatorService;
+
+    private LoggingService loggingService;
+
+    public GlobalExceptionHandler(LoggingService loggingService) {
+        this.loggingService = loggingService;
+    }
 
     @ExceptionHandler(NullPointerException.class)
     public ResponseEntity<ErrorDetails> handleNullPointerException(NullPointerException exception,
@@ -40,6 +46,7 @@ public class GlobalExceptionHandler extends ResponseEntityExceptionHandler {
         // save error database and redirect to get new endpoint
         ErrorDetails errorDetails = new ErrorDetails(new Date(), exception.getMessage(),
                 webRequest.getDescription(false));
+        loggingService.saveErrorToDatabase("HttpClientErrorException", exception.getMessage());
         return new RedirectView("/api/v1");
     }
 }
