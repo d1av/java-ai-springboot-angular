@@ -2,15 +2,16 @@ package io.davi.javai.helpers;
 
 import io.davi.javai.entity.requests.Url;
 import io.davi.javai.utils.Variables;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
 
 @Component
 public class GenerateImage {
+    @Autowired
     private RestTemplate restTemplate;
+    @Autowired
     private Variables variables;
 
     public GenerateImage(RestTemplate restTemplate, Variables variables) {

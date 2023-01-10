@@ -87,7 +87,7 @@ public class GeneratorServiceImpl implements GeneratorService {
             }
         }
         logger.info("SERVICE message : " + randomNumber);
-        loggingService.saveResponseToDatabase(dto);
+        //loggingService.saveResponseToDatabase(dto);
         return dto;
     }
 
@@ -150,7 +150,7 @@ public class GeneratorServiceImpl implements GeneratorService {
             }
         }
         logger.info("SERVICE image: " + randomNumber);
-        loggingService.saveResponseToDatabase(dto);
+        //loggingService.saveResponseToDatabase(dto);
         return dto;
     }
 

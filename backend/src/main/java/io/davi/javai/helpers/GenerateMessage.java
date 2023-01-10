@@ -2,6 +2,7 @@ package io.davi.javai.helpers;
 
 import io.davi.javai.entity.requests.*;
 import io.davi.javai.utils.Variables;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.HttpMessageConverter;
@@ -15,14 +16,11 @@ import java.util.List;
 
 @Component
 public class GenerateMessage {
-
+    @Autowired
     private Variables variables;
-    private RestTemplate restTemplate;
 
-    public GenerateMessage(Variables variables, RestTemplate restTemplate) {
-        this.variables = variables;
-        this.restTemplate = restTemplate;
-    }
+    @Autowired
+    private RestTemplate restTemplate;
 
 
     public Insult generateInsult() {
