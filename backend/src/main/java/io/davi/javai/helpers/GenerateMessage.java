@@ -1,8 +1,7 @@
 package io.davi.javai.helpers;
 
-import io.davi.javai.entity.Requests.*;
+import io.davi.javai.entity.requests.*;
 import io.davi.javai.utils.Variables;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 
@@ -31,13 +30,15 @@ public class GenerateMessage {
     }
 
     public Quote generateQuote() {
-        Quote quote = restTemplate.getForObject(variables.getQuoteMessage(), Quote.class);
-        System.out.println(quote.getAuthor().getName());
-        return quote;
+        return restTemplate.getForObject(variables.getQuoteMessage(), Quote.class);
     }
 
-    public Advice generateAnimeQuote() {
-        return restTemplate.getForObject(variables.getAnimeQuoteMessage(), Advice.class);
+    public AniQuote generateAnimeQuote() {
+        return restTemplate.getForObject(variables.getAnimeQuoteMessage(), AniQuote.class);
+    }
+
+    public Quote generateUselessFact() {
+        return restTemplate.getForObject(variables.getUselessFact(), Quote.class);
     }
 
 }

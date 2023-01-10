@@ -1,8 +1,6 @@
-package io.davi.javai.entity.Requests;
+package io.davi.javai.entity.requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonUnwrapped;
-import io.davi.javai.entity.Requests.nested.Author;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -12,8 +10,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @Getter
 @Setter
-public class Quote {
-    private String text;
-    private Author author;
-}
+@JsonIgnoreProperties(ignoreUnknown = true)
+public class Bored {
+    private String activity;
+    private String type;
 
+}

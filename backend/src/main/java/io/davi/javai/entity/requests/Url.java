@@ -1,4 +1,4 @@
-package io.davi.javai.entity.Requests;
+package io.davi.javai.entity.requests;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.AllArgsConstructor;
@@ -11,8 +11,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class Bored {
-    private String activity;
-    private String type;
-
+public class Url {
+    private String url;
+    private String image;
+    private String file;
 }

@@ -1,6 +1,6 @@
 package io.davi.javai.controller;
 
-import io.davi.javai.Services.GeneratorService;
+import io.davi.javai.services.GeneratorService;
 import io.davi.javai.dto.ResponseDto;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -20,7 +20,9 @@ public class GeneratorController {
 
     @GetMapping
     public ResponseEntity<ResponseDto> getOneStatement() {
-        return new ResponseEntity<>(generatorService.getOneStatement(), HttpStatus.OK);
+        int randomNumber = Math.toIntExact(Math.round(Math.random() * 2));
+        ResponseDto dto = (randomNumber <= 1) ? generatorService.getOneImage() : generatorService.getOneMessage();
+        return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
 }

@@ -8,7 +8,10 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Data
 public class ResponseDto {
+    private String type;
     private String quote;
     private String image;
     private String author;
+    private String extras;
+    private String nature;
 }

@@ -1,4 +1,4 @@
-package io.davi.javai.entity.Requests.nested;
+package io.davi.javai.entity.requests.nested;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
