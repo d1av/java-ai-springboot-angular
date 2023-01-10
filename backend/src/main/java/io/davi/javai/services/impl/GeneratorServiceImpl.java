@@ -1,12 +1,12 @@
 package io.davi.javai.services.impl;
 
-import io.davi.javai.helpers.GenerateImage;
-import io.davi.javai.services.GeneratorService;
 import io.davi.javai.dto.ResponseDto;
+import io.davi.javai.exceptions.HttpRequestError;
+import io.davi.javai.helpers.GenerateImage;
 import io.davi.javai.helpers.GenerateMessage;
+import io.davi.javai.services.GeneratorService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.slf4j.helpers.NOPLogger;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -70,7 +70,7 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setNature("animeQuote");
             }
             default -> {
-                throw new RuntimeException();
+                throw new HttpRequestError("Error on Api call.");
             }
         }
         logger.info("SERVICE message : " + randomNumber);
@@ -124,7 +124,7 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setNature("duckImage");
             }
             default -> {
-                throw new RuntimeException();
+                throw new HttpRequestError("Error on Api call.");
             }
         }
         logger.info("SERVICE image: " + randomNumber);

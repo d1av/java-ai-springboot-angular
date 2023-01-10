@@ -7,9 +7,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
 @RestController
-@RequestMapping("/api/v1.0")
+@RequestMapping("/api/v1")
 public class GeneratorController {
 
     private GeneratorService generatorService;
@@ -24,5 +25,6 @@ public class GeneratorController {
         ResponseDto dto = (randomNumber <= 1) ? generatorService.getOneImage() : generatorService.getOneMessage();
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
 
 }

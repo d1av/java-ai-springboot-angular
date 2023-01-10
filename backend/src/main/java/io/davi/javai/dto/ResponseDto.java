@@ -14,4 +14,5 @@ public class ResponseDto {
     private String author;
     private String extras;
     private String nature;
+    private String video;
 }
