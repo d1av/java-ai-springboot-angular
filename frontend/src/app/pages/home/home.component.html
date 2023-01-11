@@ -14,7 +14,6 @@
     </ul>
     <app-ai-status-image [nature]="apiResponseImageOrText?.nature" [typeOf]="apiResponseImageOrText?.type" ></app-ai-status-image>
     <div id="intro_right" class="container container-fluid align-items-center">
-      <button (click)="getNewAiResponse()">GET DATA</button>
       <div class="container container-fluid">
         <div class="ms-3">
           <p *ngIf="apiResponseImageOrText?.author">
@@ -52,12 +51,7 @@
         <a href="#" accesskey="m"
           >AI: A <span class="key">M</span>odern Approach</a
         >
-      </li>
-      <li>
-        <a href="#" accesskey="s"><span class="key">S</span>tuart Russell</a>
-      </li>
-      <li>
-        <a href="#" accesskey="n">Peter <span class="key">N</span>orvig</a>
+        <app-ai-button-call (btnClick)="getNewAiResponse()" ></app-ai-button-call>
       </li>
     </ul>
     <div id="right">
