@@ -7,6 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './pages/home/home.component';
 import { PagesModule } from './pages/pages.module';
+import { ComponentsModule } from './components/components.module';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { PagesModule } from './pages/pages.module';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+    ComponentsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
