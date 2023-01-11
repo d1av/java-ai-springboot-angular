@@ -1,0 +1,26 @@
+<div class="container container-fluid">
+  <div class="ms-3">
+    <p *ngIf="apiResponseImageOrText?.author">
+      {{ apiResponseImageOrText?.author }}
+    </p>
+    <p *ngIf="apiResponseImageOrText?.quote">
+      {{ apiResponseImageOrText?.quote }}
+    </p>
+    <p *ngIf="apiResponseImageOrText?.image">
+      <img [src]="getImage(apiResponseImageOrText?.image!)" alt="Image" />
+    </p>
+    <p *ngIf="apiResponseImageOrText?.video">
+      <video src="{{ apiResponseImageOrText?.author }}"></video>
+    </p>
+    <p *ngIf="apiResponseImageOrText?.extras">
+      {{ apiResponseImageOrText?.extras }}
+    </p>
+    <p *ngIf="apiResponseImageOrText?.nature">
+      {{ apiResponseImageOrText?.nature }}
+    </p>
+    <p *ngIf="apiResponseImageOrText?.type">
+      {{ apiResponseImageOrText?.type }}
+    </p>
+  </div>
+  <button (click)="getNewAiResponse()">API DATA</button>
+</div>
