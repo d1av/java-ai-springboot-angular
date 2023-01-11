@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AiStatusImageComponent } from './ai-status-image/ai-status-image.component';
-import { HomeComponent } from '../pages/home/home.component';
+import { NgModule } from '@angular/core';
 import { AiButtonCallComponent } from './ai-button-call/ai-button-call.component';
+import { AiStatusImageComponent } from './ai-status-image/ai-status-image.component';
 import { DescriptionComponent } from './layout/description/description.component';
 import { FooterComponent } from './layout/footer/footer.component';
+import { QuoteComponent } from './main-content/quote/quote.component';
 
 
 
@@ -13,7 +13,8 @@ import { FooterComponent } from './layout/footer/footer.component';
     AiStatusImageComponent,
     AiButtonCallComponent,
     DescriptionComponent,
-    FooterComponent
+    FooterComponent,
+    QuoteComponent
   ],
   imports: [
     CommonModule
@@ -22,7 +23,8 @@ import { FooterComponent } from './layout/footer/footer.component';
     AiStatusImageComponent,
     AiButtonCallComponent,
     DescriptionComponent,
-    FooterComponent
+    FooterComponent,
+    QuoteComponent
   ]
 })
 export class ComponentsModule { }

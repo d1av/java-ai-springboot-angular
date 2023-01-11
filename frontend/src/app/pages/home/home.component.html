@@ -1,3 +1,4 @@
+
 <body>
   <div id="main">
     <nav>
@@ -7,10 +8,10 @@
       <ul id="menu">
         <li class="active"><span class="key">H</span>ome</li>
         <li>
-          <a href="#" accesskey="p"><span class="key">S</span>obre</a>
+          <a href="#" accesskey="p"><span class="key">A</span>bout</a>
         </li>
         <li>
-          <a href="#" accesskey="r"><span class="key">C</span>ontato</a>
+          <a href="#" accesskey="r"><span class="key">C</span>ontact</a>
         </li>
       </ul>
     </nav>
@@ -28,34 +29,29 @@
         ></app-ai-status-image>
       </div>
       <div id="intro_right">
-        <div class="container container-fluid">
-          <div class="ms-3">
-            <p *ngIf="apiResponseImageOrText?.author">
-              {{ apiResponseImageOrText?.author }}
-            </p>
-            <p *ngIf="apiResponseImageOrText?.quote">
-              {{ apiResponseImageOrText?.quote }}
-            </p>
-            <p *ngIf="apiResponseImageOrText?.image">
-              <img
-                [src]="getImage(apiResponseImageOrText?.image!)"
-                alt="Image"
-                width="580"
-              />
-            </p>
-            <p *ngIf="apiResponseImageOrText?.video">
-              <video src="{{ apiResponseImageOrText?.video }}"></video>
-            </p>
-            <p *ngIf="apiResponseImageOrText?.extras">
-              {{ apiResponseImageOrText?.extras }}
-            </p>
-            <p *ngIf="apiResponseImageOrText?.nature">
-              {{ apiResponseImageOrText?.nature }}
-            </p>
-            <p *ngIf="apiResponseImageOrText?.type">
-              {{ apiResponseImageOrText?.type }}
-            </p>
+        <div class="container container-fluid ms-3 mt-3 mb-3">
+          <app-quote
+            *ngIf="apiResponseImageOrText?.quote"
+            [author]="apiResponseImageOrText?.author"
+            [quoteText]="apiResponseImageOrText?.quote"
+          ></app-quote>
+
+          <div class="image-container" *ngIf="apiResponseImageOrText?.image">
+            <img
+              [src]="getImage(apiResponseImageOrText?.image!)"
+              alt="Image"
+              width="580"
+            />
           </div>
+          <div class="video-container" *ngIf="apiResponseImageOrText?.video">
+            <video
+              src="{{ apiResponseImageOrText?.video }}"
+              autoplay
+              muted
+              loop
+            ></video>
+          </div>
+
         </div>
       </div>
     </div>

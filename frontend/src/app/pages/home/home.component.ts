@@ -1,4 +1,5 @@
-import { Component, Input } from '@angular/core';
+import { Component } from '@angular/core';
+import { NgxSpinnerService } from "ngx-spinner";
 import { JavaAiResponse } from 'src/app/common/java-ai-response';
 import { JavaAiService } from 'src/app/services/java-ai.service';
 
@@ -10,15 +11,16 @@ import { JavaAiService } from 'src/app/services/java-ai.service';
 export class HomeComponent {
   apiResponseImageOrText: JavaAiResponse | undefined;
 
-  constructor(private aiService: JavaAiService) {
+  constructor(private aiService: JavaAiService,
+    private spinner: NgxSpinnerService) {
     this.getNewAiResponse();
   }
+
+
 
   getNewAiResponse() {
     this.aiService.requestDataFromAi().subscribe({
       next: (data: JavaAiResponse) => {
-        console.log(data);
-
         this.apiResponseImageOrText = data;
       },
       error: (err: any) => console.log(err)
@@ -26,7 +28,7 @@ export class HomeComponent {
   }
 
   getImage(imgUrl: string) {
-    if(!imgUrl) return '';
+    if (!imgUrl) return '';
 
     return imgUrl;
   }
