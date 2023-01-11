@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 
 @Component({
   selector: 'app-ai-button-call',
@@ -8,6 +8,9 @@ import { Component, EventEmitter, Output } from '@angular/core';
 export class AiButtonCallComponent {
 
   @Output() btnClick: EventEmitter<any> = new EventEmitter();
+
+  @Input() nature: string | undefined;
+  @Input() typeOf: string | undefined;
 
   callApiForNewResponse() {
     this.btnClick.emit();

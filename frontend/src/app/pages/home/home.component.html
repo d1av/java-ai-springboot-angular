@@ -1,68 +1,74 @@
 <body>
   <div id="main">
-    <div id="logo">
-      <h1>Java <span class="blue">Artificial Intelligence</span></h1>
-    </div>
-    <ul id="menu">
-      <li class="active"><span class="key">H</span>ome</li>
-      <li>
-        <a href="#" accesskey="p"><span class="key">S</span>obre</a>
-      </li>
-      <li>
-        <a href="#" accesskey="r"><span class="key">C</span>ontato</a>
-      </li>
-    </ul>
-    <app-ai-status-image [nature]="apiResponseImageOrText?.nature" [typeOf]="apiResponseImageOrText?.type" ></app-ai-status-image>
-    <div id="intro_right" class="container container-fluid align-items-center">
-      <div class="container container-fluid">
-        <div class="ms-3">
-          <p *ngIf="apiResponseImageOrText?.author">
-            {{ apiResponseImageOrText?.author }}
-          </p>
-          <p *ngIf="apiResponseImageOrText?.quote">
-            {{ apiResponseImageOrText?.quote }}
-          </p>
-          <p *ngIf="apiResponseImageOrText?.image">
-            <img
-              [src]="getImage(apiResponseImageOrText?.image!)"
-              width="400px"
-              height="300px"
-              alt="Image"
-            />
-          </p>
-          <p *ngIf="apiResponseImageOrText?.video">
-            <video src="{{ apiResponseImageOrText?.author }}"></video>
-          </p>
-          <p *ngIf="apiResponseImageOrText?.extras">
-            {{ apiResponseImageOrText?.extras }}
-          </p>
-          <p *ngIf="apiResponseImageOrText?.nature">
-            {{ apiResponseImageOrText?.nature }}
-          </p>
-          <p *ngIf="apiResponseImageOrText?.type">
-            {{ apiResponseImageOrText?.type }}
-          </p>
+    <nav>
+      <div id="logo">
+        <h1>Java <span class="blue">Artificial Intelligence</span></h1>
+      </div>
+      <ul id="menu">
+        <li class="active"><span class="key">H</span>ome</li>
+        <li>
+          <a href="#" accesskey="p"><span class="key">S</span>obre</a>
+        </li>
+        <li>
+          <a href="#" accesskey="r"><span class="key">C</span>ontato</a>
+        </li>
+      </ul>
+    </nav>
+
+    <div class="container-content">
+      <div class="lateral-menu">
+        <app-ai-button-call
+          (btnClick)="getNewAiResponse()"
+          [nature]="apiResponseImageOrText?.nature"
+          [typeOf]="apiResponseImageOrText?.type"
+        ></app-ai-button-call>
+        <app-ai-status-image
+          [nature]="apiResponseImageOrText?.nature"
+          [typeOf]="apiResponseImageOrText?.type"
+        ></app-ai-status-image>
+
+      </div>
+      <div id="intro_right">
+        <div class="">
+          <div class="ms-3">
+            <p *ngIf="apiResponseImageOrText?.author">
+              {{ apiResponseImageOrText?.author }}
+            </p>
+            <p *ngIf="apiResponseImageOrText?.quote">
+              {{ apiResponseImageOrText?.quote }}
+            </p>
+            <p *ngIf="apiResponseImageOrText?.image">
+              <img
+                [src]="getImage(apiResponseImageOrText?.image!)"
+                width="400px"
+                height="300px"
+                alt="Image"
+              />
+            </p>
+            <p *ngIf="apiResponseImageOrText?.video">
+              <video src="{{ apiResponseImageOrText?.video }}"></video>
+            </p>
+            <p *ngIf="apiResponseImageOrText?.extras">
+              {{ apiResponseImageOrText?.extras }}
+            </p>
+            <p *ngIf="apiResponseImageOrText?.nature">
+              {{ apiResponseImageOrText?.nature }}
+            </p>
+            <p *ngIf="apiResponseImageOrText?.type">
+              {{ apiResponseImageOrText?.type }}
+            </p>
+          </div>
         </div>
       </div>
+
     </div>
 
-    <ul id="menu_left">
-      <li>
-        <a href="#" accesskey="m"
-          >AI: A <span class="key">M</span>odern Approach</a
-        >
-        <app-ai-button-call (btnClick)="getNewAiResponse()" ></app-ai-button-call>
-      </li>
-    </ul>
+
     <div id="right">
       <div class="leftcol">
         <h3>Philosophical Foundations</h3>
         <p>
-          <img
-            src="assets/images/image.gif"
-            alt="Image"
-            class="image"
-          />
+          <img src="assets/images/image.gif" alt="Image" class="image" />
           Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
           nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
           volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
@@ -70,26 +76,6 @@
           Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
           molestie consequat, vel illum dolore eu feugiat nulla facilisis at
           vero eros et accumsan et iusto odio.
-        </p>
-      </div>
-      <div class="rightcol">
-        <h3>Reinforcement Learning</h3>
-        <p>
-          <img
-            src="assets/images/image.gif"
-            alt="Image"
-            class="image"
-          />Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore.
-        </p>
-        <h3>Statistical Learning Methods</h3>
-        <p>
-          <img
-            src="assets/images/image.gif"
-            alt="Image"
-            class="image"
-          />Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore.
         </p>
       </div>
       <div class="special">
