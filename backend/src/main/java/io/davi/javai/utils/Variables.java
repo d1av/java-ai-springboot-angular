@@ -7,8 +7,6 @@ import org.springframework.stereotype.Component;
 @Component
 @Getter
 public class Variables {
-
-
     @Value("${insult.message}") String insultMessage;
     @Value("${advice.message}") String adviceMessage;
     @Value("${bored.message}") String boredMessage;
@@ -25,5 +23,6 @@ public class Variables {
     @Value("${useless.fact}") String uselessFact;
     @Value("${slip.advice}") String slipAdvice;
     @Value("${kayne.rest}") String kayneRest;
+    @Value("${dad.jokes}") String dadJokes;
 
 }

@@ -16,11 +16,14 @@ import java.util.List;
 
 @Component
 public class GenerateMessage {
-    @Autowired
-    private Variables variables;
 
-    @Autowired
+    private Variables variables;
     private RestTemplate restTemplate;
+
+    public GenerateMessage(Variables variables, RestTemplate restTemplate) {
+        this.variables = variables;
+        this.restTemplate = restTemplate;
+    }
 
 
     public Insult generateInsult() {
@@ -62,4 +65,7 @@ public class GenerateMessage {
         return res;
     }
 
+    public DadJokes generateDadJokes() {
+        return restTemplate.getForObject(variables.getDadJokes(), DadJokes.class);
+    }
 }

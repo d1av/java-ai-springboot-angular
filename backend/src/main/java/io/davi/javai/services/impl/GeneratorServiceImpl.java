@@ -27,8 +27,8 @@ public class GeneratorServiceImpl implements GeneratorService {
     @Override
     public ResponseDto getOneMessage() {
         ResponseDto dto = new ResponseDto();
-        int randomNumber = Math.toIntExact(Math.round(Math.random() * 7));
-        //int randomNumber = 7;
+        int randomNumber = Math.toIntExact(Math.round(Math.random() * 8));
+        //int randomNumber = 8;
         switch (randomNumber) {
             case 0 -> {
                 String author = generateMessage.generateInsult().getCreatedby().trim();
@@ -82,6 +82,12 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setAuthor("Kayne West");
                 dto.setNature("kayneQuote");
             }
+            case 8 -> {
+                dto.setType("text");
+                dto.setQuote(generateMessage.generateDadJokes().getAttachments()[0].getText());
+                dto.setExtras(generateMessage.generateDadJokes().getAttachments()[0].getFallback());
+                dto.setNature("dadJokes");
+            }
             default -> {
                 throw new HttpRequestError("Error on Message Api call. Reload and it should disappear.");
             }
@@ -129,16 +135,17 @@ public class GeneratorServiceImpl implements GeneratorService {
             }
             case 6 -> {
                 String dogImageOrVideo = generateImage.generateDog().getUrl();
-                if (dogImageOrVideo.endsWith(".mp4")) {
-                    dto.setType("video");
-                    dto.setVideo(dogImageOrVideo);
-                    dto.setNature("dogVideo");
-                } else {
-                    dto.setType("image");
-                    dto.setImage(dogImageOrVideo);
-                    dto.setNature("dogImage");
+                if (dogImageOrVideo != null) {
+                    if (dogImageOrVideo.endsWith(".mp4")) {
+                        dto.setType("video");
+                        dto.setVideo(dogImageOrVideo);
+                        dto.setNature("dogVideo");
+                    } else {
+                        dto.setType("image");
+                        dto.setImage(dogImageOrVideo);
+                        dto.setNature("dogImage");
+                    }
                 }
-
             }
             case 7 -> {
                 dto.setType("image");
