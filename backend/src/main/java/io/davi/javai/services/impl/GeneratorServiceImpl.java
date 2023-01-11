@@ -6,6 +6,7 @@ import io.davi.javai.helpers.GenerateImage;
 import io.davi.javai.helpers.GenerateMessage;
 import io.davi.javai.services.GeneratorService;
 import io.davi.javai.services.LoggingService;
+import io.davi.javai.utils.RandomNumber;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -14,29 +15,22 @@ import org.springframework.stereotype.Service;
 public class GeneratorServiceImpl implements GeneratorService {
 
     Logger logger = LoggerFactory.getLogger(GeneratorServiceImpl.class);
-    private GenerateMessage generateMessage;
-    private GenerateImage generateImage;
-    private LoggingService loggingService;
+    private final GenerateMessage generateMessage;
+    private final GenerateImage generateImage;
+    private final RandomNumber randomNumber;
 
-    public GeneratorServiceImpl(GenerateMessage generateMessage, GenerateImage generateImage, LoggingService loggingService) {
+    public GeneratorServiceImpl(GenerateMessage generateMessage, GenerateImage generateImage, RandomNumber randomNumber) {
         this.generateMessage = generateMessage;
         this.generateImage = generateImage;
-        this.loggingService = loggingService;
+        this.randomNumber = randomNumber;
     }
 
     @Override
     public ResponseDto getOneMessage() {
         ResponseDto dto = new ResponseDto();
-        int randomNumber = Math.toIntExact(Math.round(Math.random() * 8));
-        //int randomNumber = 8;
-        switch (randomNumber) {
-            case 0 -> {
-                String author = generateMessage.generateInsult().getCreatedby().trim();
-                dto.setType("text");
-                dto.setQuote(generateMessage.generateInsult().getInsult());
-                dto.setAuthor(author.length() > 1 ? author : null);
-                dto.setNature("insult");
-            }
+        int chosenNumber = randomNumber.Generate(9);
+        //int chosenNumber = 8;
+        switch (chosenNumber) {
             case 1 -> {
                 String author = generateMessage.generateAdvice().getAuthor().trim();
                 dto.setType("text");
@@ -88,11 +82,18 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setExtras(generateMessage.generateDadJokes().getAttachments()[0].getFallback());
                 dto.setNature("dadJokes");
             }
+            case 9 -> {
+                String author = generateMessage.generateInsult().getCreatedby().trim();
+                dto.setType("text");
+                dto.setQuote(generateMessage.generateInsult().getInsult());
+                dto.setAuthor(author.length() > 1 ? author : null);
+                dto.setNature("insult");
+            }
             default -> {
                 throw new HttpRequestError("Error on Message Api call. Reload and it should disappear.");
             }
         }
-        logger.info("SERVICE message : " + randomNumber);
+        logger.info("SERVICE message : " + chosenNumber);
         //loggingService.saveResponseToDatabase(dto);
         return dto;
     }
@@ -100,14 +101,9 @@ public class GeneratorServiceImpl implements GeneratorService {
     @Override
     public ResponseDto getOneImage() {
         ResponseDto dto = new ResponseDto();
-        int randomNumber = Math.toIntExact(Math.round(Math.random() * 7));
-        //int math = 4;
-        switch (randomNumber) {
-            case 0 -> {
-                dto.setType("image");
-                dto.setImage(generateImage.generateAnimeBonk().getUrl());
-                dto.setNature("bonkImage");
-            }
+        int chosenNumber = randomNumber.Generate(8);
+        //int chosenNumber = 4;
+        switch (chosenNumber) {
             case 1 -> {
                 dto.setType("image");
                 dto.setImage(generateImage.generateAnimeSmile().getUrl());
@@ -152,11 +148,16 @@ public class GeneratorServiceImpl implements GeneratorService {
                 dto.setImage(generateImage.generateDuck().getUrl());
                 dto.setNature("duckImage");
             }
+            case 8 -> {
+                dto.setType("image");
+                dto.setImage(generateImage.generateAnimeBonk().getUrl());
+                dto.setNature("bonkImage");
+            }
             default -> {
                 throw new HttpRequestError("Error on Image Api call. Reload and it should disappear.");
             }
         }
-        logger.info("SERVICE image: " + randomNumber);
+        logger.info("SERVICE image: " + chosenNumber);
         //loggingService.saveResponseToDatabase(dto);
         return dto;
     }

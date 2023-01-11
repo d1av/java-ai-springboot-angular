@@ -7,7 +7,10 @@ import io.davi.javai.exceptions.JavaAIError;
 import io.davi.javai.repository.ErrorLogRepository;
 import io.davi.javai.repository.ResponseRepository;
 import io.davi.javai.services.LoggingService;
+import io.davi.javai.utils.RandomNumber;
 import org.springframework.stereotype.Service;
+
+import java.util.Random;
 
 @Service
 public class LoggingServiceImpl implements LoggingService {
