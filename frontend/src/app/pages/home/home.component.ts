@@ -10,7 +10,9 @@ import { JavaAiService } from 'src/app/services/java-ai.service';
 export class HomeComponent {
   apiResponseImageOrText: JavaAiResponse | undefined;
 
-  constructor(private aiService: JavaAiService) { }
+  constructor(private aiService: JavaAiService) {
+    this.getNewAiResponse();
+  }
 
   getNewAiResponse() {
     this.aiService.requestDataFromAi().subscribe({

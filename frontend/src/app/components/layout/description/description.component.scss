@@ -1,0 +1,19 @@
+#right {
+  display: flex;
+  flex-direction: row;
+  flex:0 1;
+  height: 270px;
+  .leftcol {
+    padding: 12px 15px;
+    border: #ccc 1px solid;
+    text-align: justify;
+    margin: 0 0 10px 0;
+  }
+  .special {
+    margin: 0px 0 10px 0;
+    padding: 5px 20px;
+    border: 1px solid #ccc;
+    background: #eee;
+    color: #444;
+  }
+}

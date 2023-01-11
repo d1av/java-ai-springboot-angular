@@ -138,7 +138,13 @@ h3 {
     app-ai-button-call {
       position: absolute;
       top: 330px;
-      left: 80px;
+      left: -5px;
+    }
+    .intro-right {
+      img{
+        object-fit: contain;
+        box-shadow: 60px -16px black;
+      }
     }
   }
 }
@@ -181,34 +187,4 @@ h3 {
   margin: 0 0 5px 0;
   background: #ffffad url("../../../assets/images/package.gif") no-repeat;
   color: #585616;
-}
-
-/* RIGHT SIDE */
-
-#right {
-  display: flex;
-  flex-direction: row;
-  flex:0 1;
-  height: 400px;
-  .leftcol {
-    padding: 12px 15px;
-    border: #ccc 1px solid;
-    text-align: justify;
-    margin: 0 0 10px 0;
-  }
-  .special {
-    margin: 0px 0 10px 0;
-    padding: 5px 20px;
-    border: 1px solid #ccc;
-    background: #eee;
-    color: #444;
-  }
-}
-
-/* FOOTER */
-
-#footer {
-  clear: both;
-  padding: 5px;
-  border-top: 1px solid #ccc;
 }

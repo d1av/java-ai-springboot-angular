@@ -26,10 +26,9 @@
           [nature]="apiResponseImageOrText?.nature"
           [typeOf]="apiResponseImageOrText?.type"
         ></app-ai-status-image>
-
       </div>
       <div id="intro_right">
-        <div class="">
+        <div class="container container-fluid">
           <div class="ms-3">
             <p *ngIf="apiResponseImageOrText?.author">
               {{ apiResponseImageOrText?.author }}
@@ -40,9 +39,8 @@
             <p *ngIf="apiResponseImageOrText?.image">
               <img
                 [src]="getImage(apiResponseImageOrText?.image!)"
-                width="400px"
-                height="300px"
                 alt="Image"
+                width="580"
               />
             </p>
             <p *ngIf="apiResponseImageOrText?.video">
@@ -60,41 +58,8 @@
           </div>
         </div>
       </div>
-
     </div>
-
-
-    <div id="right">
-      <div class="leftcol">
-        <h3>Philosophical Foundations</h3>
-        <p>
-          <img src="assets/images/image.gif" alt="Image" class="image" />
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-          molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto odio.
-        </p>
-      </div>
-      <div class="special">
-        <p>
-          Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
-          nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat
-          volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation
-          ullamcorper suscipit lobortis nisl ut aliquip ex ea commodo consequat.
-          Duis autem vel eum iriure dolor in hendrerit in vulputate velit esse
-          molestie consequat, vel illum dolore eu feugiat nulla facilisis at
-          vero eros et accumsan et iusto odio dignissim qui blandit praesent
-          luptatum zzril delenit augue duis dolore te feugait nulla facilisi.
-        </p>
-      </div>
-    </div>
-    <footer id="footer">
-      <p>
-        &copy; Copyright <a href="#">Artificial Intelligence</a> 2006 &middot;
-      </p>
-    </footer>
+    <app-description></app-description>
+    <app-footer></app-footer>
   </div>
 </body>
